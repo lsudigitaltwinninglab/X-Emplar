@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkaf0otbgtrp5"]
 
-[ext_resource type="Script" uid="uid://8e4xx2ujtvll" path="res://OverworldScenes/Levels/level.gd" id="1_b2cq8"]
+[ext_resource type="Script" uid="uid://8e4xx2ujtvll" path="res://OverworldScenes/SceneScripts/level.gd" id="1_b2cq8"]
 [ext_resource type="Texture2D" uid="uid://dyc0te0xpc1u8" path="res://icon.svg" id="1_bovvr"]
 [ext_resource type="PackedScene" path="res://scenes/characters/2.5player.tscn" id="2_b2cq8"]
 

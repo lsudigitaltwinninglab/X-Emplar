@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cdxvb3k76jpl2"]
+
+[ext_resource type="PackedScene" uid="uid://bcs3gni8xyg8a" path="res://Player/UPDATED_player.tscn" id="1_akqjo"]
+[ext_resource type="Script" uid="uid://ckk0dhrg4pkoq" path="res://OverworldScenes/Player&Camera/camera_pivot.gd" id="2_jl5io"]
+[ext_resource type="Shader" uid="uid://ba1h1gdsyflvo" path="res://Shaders/blackoutline.gdshader" id="3_bnvjm"]
+[ext_resource type="Script" uid="uid://toaljed1v5lp" path="res://Shaders/infiniteboundary_camera.gd" id="4_w3sm2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ebo1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_470n0"]
+sky_material = SubResource("ProceduralSkyMaterial_3ebo1")
+
+[sub_resource type="Environment" id="Environment_6lijc"]
+background_mode = 2
+sky = SubResource("Sky_470n0")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_t721i"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6xf2"]
+_data = {
+&"idle": SubResource("Animation_t721i")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_ofyrq"]
+size = Vector2(1.9272006, 1.534654)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukphn"]
+render_priority = 10
+shader = ExtResource("3_bnvjm")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.5210001197475
+shader_parameter/depth_threshold = 0.0509999987097
+shader_parameter/slope_bias = 0.0
+
+[node name="SchoolHallways" type="Node3D" unique_id=698238990]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1863795485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9499998, 0, -9.85)
+use_collision = true
+size = Vector3(16.7, 1, 39)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1475816257]
+environment = SubResource("Environment_6lijc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2032684480]
+transform = Transform3D(0.008574008, 0.9880641, -0.1538044, -0.6009501, 0.12802716, 0.7889664, 0.7992405, 0.08566417, 0.59487504, 0, 17.9, 16.5)
+shadow_enabled = true
+
+[node name="MadisonPlayer" parent="." unique_id=1134779537 instance=ExtResource("1_akqjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -10.579425)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1307348838]
+libraries/ = SubResource("AnimationLibrary_i6xf2")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=734605021]
+transform = Transform3D(1, 0, 0, 0, 0.97778326, -0.20961857, 0, 0.20961857, 0.97778326, 0, 5, 10)
+script = ExtResource("2_jl5io")
+camera_distance = 7.2
+
+[node name="Camera" type="Camera3D" parent="CameraRig" unique_id=83622145]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraRig/Camera" unique_id=1099894023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_ofyrq")
+surface_material_override/0 = SubResource("ShaderMaterial_ukphn")
+script = ExtResource("4_w3sm2")

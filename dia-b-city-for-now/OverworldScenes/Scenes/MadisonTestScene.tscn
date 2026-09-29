@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cngsbwwsw5r1h" path="res://Cody/2d assets/Xemplar_Grass_Texture_ambient_occlusion.png" id="2_twr1q"]
 [ext_resource type="Texture2D" uid="uid://bwxgg48wnochw" path="res://Cody/2d assets/Xemplar_Grass_Texture_height.png" id="3_658xd"]
 [ext_resource type="Texture2D" uid="uid://b536p1264nj8w" path="res://Cody/2d assets/Xemplar_Grass_Texture_normal.png" id="4_38htn"]
-[ext_resource type="PackedScene" uid="uid://bcs3gni8xyg8a" path="res://player/UPDATED_player.tscn" id="5_tkm1g"]
+[ext_resource type="PackedScene" uid="uid://bcs3gni8xyg8a" path="res://Player/UPDATED_player.tscn" id="5_tkm1g"]
 [ext_resource type="Script" uid="uid://ckk0dhrg4pkoq" path="res://OverworldScenes/Player&Camera/camera_pivot.gd" id="6_1o02w"]
 [ext_resource type="Shader" uid="uid://ba1h1gdsyflvo" path="res://Shaders/blackoutline.gdshader" id="7_aiacv"]
 [ext_resource type="Script" uid="uid://toaljed1v5lp" path="res://Shaders/infiniteboundary_camera.gd" id="8_vjrq5"]
@@ -19,17 +19,18 @@
 [ext_resource type="Script" uid="uid://c6344qwvynyqw" path="res://AdditionalScripts/minigame_portal.gd" id="17_at7sf"]
 [ext_resource type="FontFile" uid="uid://urwk0s27erx0" path="res://Font/OriginalSurfer-Regular.ttf" id="18_t6yog"]
 [ext_resource type="Script" uid="uid://bp3rtf00u7bae" path="res://OverworldScenes/Scenes/minigame_portal_gratitude_journal.gd" id="18_vgmwn"]
+[ext_resource type="Script" uid="uid://cw8sonb31lrj0" path="res://OverworldScenes/Scenes/school_entrance.gd" id="20_5pcdj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3eot6"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_470n0"]
+[sub_resource type="Sky" id="Sky_5pcdj"]
 sky_material = SubResource("ProceduralSkyMaterial_3eot6")
 
 [sub_resource type="Environment" id="Environment_gpb5v"]
 background_mode = 2
-sky = SubResource("Sky_470n0")
+sky = SubResource("Sky_5pcdj")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsmjj"]
@@ -57,7 +58,7 @@ _data = {
 }
 
 [sub_resource type="QuadMesh" id="QuadMesh_dqfpf"]
-size = Vector2(2.3614967, 1.534654)
+size = Vector2(1.9272006, 1.534654)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_38kbm"]
 render_priority = 10
@@ -102,6 +103,9 @@ size = Vector3(9.55, 0.6, 6.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7p4u"]
 size = Vector3(9, 1, 7)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6yog"]
+size = Vector3(4.1, 7.5, 1)
+
 [node name="MadisonTesting" type="Node3D" unique_id=1155567079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.2, -0.8)
 
@@ -118,11 +122,6 @@ calculate_tangents = false
 use_collision = true
 size = Vector3(23.83, 1, 17.135)
 material = SubResource("StandardMaterial3D_wsmjj")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1193552416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.994228, 0, -16.13584)
-use_collision = true
-size = Vector3(1.9, 3.5, 4.6)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1188522473]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.826923, 0, -19.018755)
@@ -272,7 +271,7 @@ font = ExtResource("18_t6yog")
 font_size = 70
 
 [node name="MinigameTestArch3" type="MeshInstance3D" parent="." unique_id=982731926]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.40062404, 2.8, -25.516453)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 26.899378, 2.8, -25.516455)
 mesh = SubResource("ArrayMesh_38kbm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MinigameTestArch3" unique_id=2012574728]
@@ -300,8 +299,18 @@ text = "FOCUS TRAINING"
 font = ExtResource("18_t6yog")
 font_size = 70
 
+[node name="SchoolEntrance" type="Area3D" parent="." unique_id=316323780]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.9, -37.399998)
+script = ExtResource("20_5pcdj")
+destination_scene = "uid://cdxvb3k76jpl2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SchoolEntrance" unique_id=1014439364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0.5)
+shape = SubResource("BoxShape3D_t6yog")
+
 [connection signal="body_entered" from="Interactable/Area3D" to="Interactable" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Interactable/Area3D" to="Interactable" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="MinigameTestArch1/MinigamePortalLunchLine" to="MinigameTestArch1/MinigamePortalLunchLine" method="_on_body_entered"]
 [connection signal="body_entered" from="MinigameTestArch2/MinigamePortalGratitudeJournal" to="MinigameTestArch2/MinigamePortalGratitudeJournal" method="_on_body_entered"]
 [connection signal="body_entered" from="MinigameTestArch3/MinigamePortalFocusTraining" to="MinigameTestArch3/MinigamePortalFocusTraining" method="_on_body_entered"]
+[connection signal="body_entered" from="SchoolEntrance" to="SchoolEntrance" method="_on_body_entered"]

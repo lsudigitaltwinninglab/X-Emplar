@@ -2,7 +2,7 @@ extends Node
 
 var previous_scene_path: String = ""
 
-func go_to_minigame(minigame_path: String):
+func go_to_scene(minigame_path: String):
 	previous_scene_path = get_tree().current_scene.scene_file_path
 	print("Saved previous scene: ", previous_scene_path)
 
