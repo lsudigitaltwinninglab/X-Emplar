@@ -31,10 +31,6 @@ script = ExtResource("1_4o2er")
 position = Vector2(960, 540)
 script = ExtResource("2_1l2ok")
 
-[node name="CircleVisual" type="TextureRect" parent="Arena" unique_id=1164737792]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Circle" type="Sprite2D" parent="Arena" unique_id=319622210]
 position = Vector2(0.9999862, 0.99998474)
 scale = Vector2(3.1072693, 2.8940253)
