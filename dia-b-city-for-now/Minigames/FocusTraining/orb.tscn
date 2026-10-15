@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bistjhp5ss0cr"]
+
+[ext_resource type="Script" uid="uid://cr2di7xig6foj" path="res://Minigames/FocusTraining/orb.gd" id="1_ousa0"]
+[ext_resource type="Texture2D" uid="uid://47nphmpgfewq" path="res://Minigames/FocusTraining/tempOrb.png" id="2_twrjm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qxc6"]
+radius = 91.04944
+
+[node name="Orb" type="CharacterBody2D" unique_id=2107916074]
+script = ExtResource("1_ousa0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=927904140]
+position = Vector2(0.9999695, 1.0000305)
+scale = Vector2(0.20507813, 0.20507813)
+texture = ExtResource("2_twrjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=669732554]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_7qxc6")
